@@ -1,8 +1,8 @@
 use bills;
 
 insert into rent (rent_total,month,day,year) values (2100,9,1,2020);
-insert into tenants (rent,first_name,last_name) values (1,'josh','villegas');
-insert into address values (1,'492 F St.','Arcata','CA','95521');
+insert into tenants (rent,first_name,last_name) values (1,'first','last');
+insert into address values (1,'','','','');
 insert into rent_payments values (1,1,8,7,2020,true,525,25);
 
 insert into deposit values (1,4200,2100);
