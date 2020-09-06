@@ -1,0 +1,21 @@
+<% var js_include=['navbar.js','tenants.js']; %>
+
+<%- include ('header',{js_include:js_include}) %>
+
+<div class="content tenants">
+  <button id="add-tenant">Add</button>
+
+  <form id="tenants-form">
+    <div id="formRents">
+      <label for="rents">Locations</label>
+      <select id="rents-dropdown" required="true">
+        <option value="" disabled selected>Please select a location</option>
+        <% for (var i=0;i<rents.length;i++) { %>
+          <option value="<%= rents[i].id %>"><%= rents[i].street_address %> <%= rents[i].city %> <%= rents[i].state %> <%= rents[i].zip_code %></option>
+        <% } %>
+      </select>
+    </div>
+  </form>
+</div>
+
+<%- include ('footer') %>

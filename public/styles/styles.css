@@ -1,0 +1,305 @@
+div.content.index {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+div.content.index h1 {
+  width: 100%;
+  color: #848fa7;
+}
+div.content.index div.rent {
+  width: 100%;
+  margin-bottom: 25px;
+}
+@media (min-width: 767px) {
+  div.content.index div.rent {
+    width: 50%;
+  }
+}
+div.content.index div.rent span.section_title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0 15px 10px 15px;
+  color: #848fa7;
+}
+div.content.index div.rent div.rent_amount {
+  background-color: #848fa7;
+  margin: 0 15px;
+}
+div.content.index div.rent div.rent_amount span {
+  color: #3b4252;
+}
+div.content.index div.rent div.rent_due_date {
+  background-color: #848fa7;
+  margin: 0 15px;
+}
+div.content.index div.rent div.rent_due_date span {
+  color: #3b4252;
+}
+div.content.index div.deposit {
+  width: 100%;
+  margin-bottom: 25px;
+}
+@media (min-width: 767px) {
+  div.content.index div.deposit {
+    width: 50%;
+  }
+}
+div.content.index div.deposit span.section_title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0 15px 10px 15px;
+  color: #848fa7;
+}
+div.content.index div.deposit div.deposit_amount {
+  background-color: #848fa7;
+  margin: 0 15px;
+}
+div.content.index div.deposit div.deposit_amount span {
+  color: #3b4252;
+}
+div.content.index div.deposit div.deposit_remainder {
+  background-color: #848fa7;
+  margin: 0 15px;
+}
+div.content.index div.deposit div.deposit_remainder span {
+  color: #3b4252;
+}
+div.content.index div.utilities {
+  width: 100%;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+}
+div.content.index div.utilities span.section_title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 0 15px 10px 15px;
+  color: #848fa7;
+}
+div.content.index div.utilities div.utility {
+  width: 100%;
+}
+@media (min-width: 767px) {
+  div.content.index div.utilities div.utility {
+    width: 25%;
+  }
+}
+div.content.index div.utilities div.utility div.utility_name {
+  background-color: #848fa7;
+  margin: 0 15px;
+  font-weight: bold;
+}
+div.content.index div.utilities div.utility div.utility_name span.utility_name_value {
+  color: #3b4252;
+}
+div.content.index div.utilities div.utility div.utility_amount {
+  margin: 0 15px;
+  color: #848fa7;
+}
+div.content.index div.utilities div.utility div.utility_due_date {
+  margin: 0 15px;
+  color: #848fa7;
+}
+div.content.index div.tenants {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+div.content.index div.tenants span.section_title {
+  width: 100%;
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #848fa7;
+}
+div.content.index div.tenants div.tenant {
+  width: 100%;
+  margin-bottom: 15px;
+}
+@media (min-width: 767px) {
+  div.content.index div.tenants div.tenant {
+    width: 33.33%;
+  }
+}
+div.content.index div.tenants div.tenant div.name {
+  background-color: #848fa7;
+  margin: 0px 15px;
+}
+div.content.index div.tenants div.tenant div.name span.name {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant div.rent_payment {
+  margin: 0px 15px 15px 15px;
+}
+div.content.index div.tenants div.tenant div.rent_payment span.section_sub_title {
+  font-weight: bold;
+  background-color: #3b4252;
+  color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.rent_payment div {
+  background-color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.rent_payment div span {
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant button {
+  width: 100%;
+  max-width: 230px;
+  margin: 10px auto 0 auto;
+  background-color: #3b4252;
+  color: #848fa7;
+  border: 2px solid #848fa7;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+div.content.index div.tenants div.tenant button:hover {
+  background-color: #848fa7;
+  color: #3b4252;
+  border: 2px solid #3b4252;
+}
+div.content.index div.tenants div.tenant div.utility_payments {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+div.content.index div.tenants div.tenant div.utility_payments span.section_sub_title {
+  margin: 0 15px;
+  font-weight: bold;
+  width: 100%;
+  background-color: #848fa7;
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment {
+  width: 100%;
+  margin: 0 auto;
+}
+@media (min-width: 767px) {
+  div.content.index div.tenants div.tenant div.utility_payments div.utility_payment {
+    width: 45%;
+  }
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_name span {
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_total {
+  background-color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_total span {
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_percentage {
+  background-color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_percentage span {
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_date {
+  background-color: #848fa7;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment div.utility_payment_date span {
+  color: #3b4252;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment button {
+  width: 100%;
+  max-width: 230px;
+  margin: 10px auto 0 auto;
+  background-color: #3b4252;
+  color: #848fa7;
+  border: 2px solid #848fa7;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+div.content.index div.tenants div.tenant div.utility_payments div.utility_payment button:hover {
+  background-color: #848fa7;
+  color: #3b4252;
+  border: 2px solid #3b4252;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #848fa7;
+  border-radius: 15px;
+}
+.navbar a {
+  float: left;
+  display: block;
+  color: #3b4252;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.navbar a:hover {
+  background-color: #3b4252;
+  color: #848fa7;
+}
+.navbar a.active {
+  background-color: #f9f9f9;
+  color: #3b4252;
+}
+.navbar a .icon {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+div.content.emma {
+  text-align: center;
+}
+div.content.emma div.greeting span {
+  display: block;
+  color: #848fa7;
+}
+div.content.emma div.instructions span {
+  display: block;
+  color: #848fa7;
+}
+div.content.rents {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+div.content.rents div.add_container {
+  width: 100%;
+}
+div.content.rents #formRents {
+  width: 100%;
+}
+body {
+  width: 100%;
+  margin: 0px;
+  background-color: #3b4252;
+}

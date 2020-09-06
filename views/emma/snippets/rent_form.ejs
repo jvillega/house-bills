@@ -1,0 +1,36 @@
+<div id="formTotal">
+  <label for="total">Rent Total</label>
+  <input id="total" type="text" value="<%= rent.rent_total %>">
+</div>
+
+<div id="formDay">
+  <label for="day">Day</label>
+  <input id="day" type="text" value="<%= rent.day %>">
+</div>
+
+<div id="formAddress">
+  <label for="address">Address</label>
+  <input id="address" type="text" value="<%= rent.street_address %>">
+</div>
+
+<div id="formCity">
+  <label for="city">City</label>
+  <input id="city" type="text" value="<%= rent.city %>">
+</div>
+
+<%- include ('states_dropdown') %>
+
+<div id="formZip">
+  <label for="zip">Zip</label>
+  <input id="zip" type="text" value="<%= rent.zip_code %>">
+</div>
+
+<div id="formDeposit">
+  <label form="deposit">Deposit Total</label>
+  <input id="deposit" type="text" value="<%= rent.deposit_total %>">
+</div>
+
+<div id="formRemainingDeposit">
+  <label form="remaining_deposit">Remaining Deposit</label>
+  <input id="remaining_deposit" type="text" value="<%= rent.remainder %>">
+</div>

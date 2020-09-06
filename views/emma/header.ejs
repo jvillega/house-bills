@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <title>Bills</title>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <script type="application/javascript" src="/js/jquery-3.5.1.min.js"></script>
+    <script src="https://use.fontawesome.com/2e7701bc26.js"></script>
+
+    <% if (typeof js_include!=='undefined') { %>
+      <% for (var i=0;i<js_include.length;i++) { %>
+        <script type="application/javascript" src="/js/<%= js_include[i] %>"></script>
+      <% } %>
+    <% } %>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="header-top">
+        <h1>Header</h1>
+      </div>
+
+      <%- include ('navbar') %>
+
+    </header>

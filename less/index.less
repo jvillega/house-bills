@@ -1,0 +1,215 @@
+div.content.index {
+  width: 80%;
+  margin: 0 auto;
+  .flex-display();
+  text-align: center;
+  h1 {
+    width: 100%;
+    color: @secondary-color;
+  }
+  div.rent {
+    width: 100%;
+    margin-bottom: 25px;
+    @media (min-width: @screen-sm-min) {
+      width: 50%;
+    }
+    span.section_title {
+      width: 100%;
+	    font-weight: bold;
+	    font-size: 22px;
+	    margin: 0 15px 10px 15px;
+	    color: @secondary-color;
+    }
+    div.rent_amount {
+      background-color: @secondary-color;
+	    margin: 0 15px;
+	    span {
+        color: @main-color;
+      }
+    }
+    div.rent_due_date {
+      background-color: @secondary-color;
+	    margin: 0 15px;
+	    span {
+        color: @main-color;
+      }
+    }
+  }
+  div.deposit {
+    width: 100%;
+    margin-bottom: 25px;
+    @media (min-width: @screen-sm-min) {
+      width: 50%;
+    }
+    span.section_title {
+      width: 100%;
+	    font-weight: bold;
+	    font-size: 22px;
+	    margin: 0 15px 10px 15px;
+	    color: @secondary-color;
+    }
+    div.deposit_amount {
+	    background-color: @secondary-color;
+	    margin: 0 15px;
+	    span {
+        color: @main-color;
+      }
+    }
+    div.deposit_remainder {
+	    background-color: @secondary-color;
+      margin: 0 15px;
+      span {
+        color: @main-color;
+      }
+    }
+  }
+  div.utilities {
+    width: 100%;
+    margin-bottom: 25px;
+    .flex-display();
+    span.section_title {
+      width: 100%;
+	    font-weight: bold;
+	    font-size: 22px;
+	    margin: 0 15px 10px 15px;
+	    color: @secondary-color;
+    }
+    div.utility {
+      width: 100%;
+	    @media (min-width: @screen-sm-min) {
+        width: 25%;
+      }
+      div.utility_name {
+        background-color: @secondary-color;
+        margin: 0 15px;
+        font-weight: bold;
+        span.utility_name_value {
+          color: @main-color;
+        }
+      }
+      div.utility_amount {
+        margin: 0 15px;
+        color: @secondary-color;
+      }
+      div.utility_due_date {
+        margin: 0 15px;
+        color: @secondary-color;
+      }
+    }
+  }
+  div.tenants {
+    width: 100%;
+    .flex-display();
+    margin-bottom: 25px;
+    span.section_title {
+      width: 100%;
+	    font-weight: bold;
+	    font-size: 22px;
+	    margin-bottom: 10px;
+	    color: @secondary-color;
+    }
+    div.tenant {
+	    width: 100%;
+	    margin-bottom: 15px;
+	    @media (min-width: @screen-sm-min) {
+        width: 33.33%;
+      }
+      div.name {
+        background-color: @secondary-color;
+        margin: 0px 15px;
+        span.name {
+          text-transform: capitalize;
+          font-weight: bold;
+          color: @main-color;
+        }
+      }
+      div.rent_payment {
+        margin: 0px 15px 15px 15px;
+        span.section_sub_title {
+          font-weight: bold;
+          background-color: @main-color;
+          color: @secondary-color;
+        }
+        div {
+          background-color: @secondary-color;
+          span {
+            color: @main-color;
+          }
+        }
+      }
+      button {
+        width: 100%;
+        max-width: 230px;
+        margin: 10px auto 0 auto;
+        background-color: @main-color;
+        color: @secondary-color;
+        border: 2px solid @secondary-color;
+        padding: 10px 15px;
+        border-radius: 10px;
+        &:hover {
+          background-color: @secondary-color;
+          color: @main-color;
+          border: 2px solid @main-color;
+        }
+      }
+      div.utility_payments {
+        .flex-display();
+        margin-bottom: 15px;
+        span.section_sub_title {
+          margin: 0 15px;
+          font-weight: bold;
+          width: 100%;
+          background-color: @secondary-color;
+          color: @main-color;
+        }
+        div.utility_payment {
+          width: 100%;
+          margin: 0 auto;
+          @media (min-width: @screen-sm-min) {
+            width: 45%;
+          }
+          div.utility_payment_name {
+            span {
+              text-transform: capitalize;
+              font-weight: bold;
+              color: @secondary-color;
+            }
+          }
+          div.utility_payment_total {
+            background-color: @secondary-color;
+            span {
+              color: @main-color;
+            }
+          }
+          div.utility_payment_percentage {
+            background-color: @secondary-color;
+            span {
+              color: @main-color;
+            }
+          }
+          div.utility_payment_date {
+            background-color: @secondary-color;
+            span {
+              color: @main-color;
+            }
+          }
+          button {
+            width: 100%;
+            max-width: 230px;
+            margin: 10px auto 0 auto;
+            background-color: @main-color;
+            color: @secondary-color;
+            border: 2px solid @secondary-color;
+            padding: 10px 15px;
+            border-radius: 10px;
+            &:hover {
+              background-color: @secondary-color;
+              color: @main-color;
+              border: 2px solid @main-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
