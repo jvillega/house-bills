@@ -1,0 +1,9 @@
+<div id="form_tenants">
+  <label for="tenants_dropdown">Tenants:</label>
+  <select id="tenants_dropdown" required="true">
+    <option value="" disabled selected>Please select a tenant</option>
+    <% for (var i=0;i<tenants.length;i++) { %>
+      <option value="<%= tenants[i].id %>"><%= tenants[i].first_name %> <%= tenants[i].last_name %></option>
+    <% } %>
+  </select>
+</div>

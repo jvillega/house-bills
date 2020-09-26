@@ -1,0 +1,9 @@
+<div id="form_locations">
+  <label for="locations">Locations</label>
+  <select id="locations_dropdown">
+    <option value="" disabled selected>Please select a location</option>
+    <% for (var i=0;i<rents.length;i++) { %>
+      <option value="<%= rents[i].id %>"><%= rents[i].street_address %> <%= rents[i].city %> <%= rents[i].state %> <%= rents[i].zip_code %></option>
+    <% } %>
+  </select>
+</div>

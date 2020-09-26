@@ -1,36 +1,87 @@
-<div id="formTotal">
+<% if (rent===undefined) { %>
+
+<div id="form_total">
   <label for="total">Rent Total</label>
-  <input id="total" type="text" value="<%= rent.rent_total %>">
+  <input id="total" type="text" value="" required>
 </div>
 
-<div id="formDay">
+<div id="form_day">
   <label for="day">Day</label>
-  <input id="day" type="text" value="<%= rent.day %>">
+  <input id="day" type="text" value="" required>
 </div>
 
-<div id="formAddress">
+<div id="form_address">
   <label for="address">Address</label>
-  <input id="address" type="text" value="<%= rent.street_address %>">
+  <input id="address" type="text" value="" required>
 </div>
 
-<div id="formCity">
+<div id="form_city">
   <label for="city">City</label>
-  <input id="city" type="text" value="<%= rent.city %>">
+  <input id="city" type="text" value="" required>
 </div>
 
 <%- include ('states_dropdown') %>
 
-<div id="formZip">
+<div id="form_zip">
   <label for="zip">Zip</label>
-  <input id="zip" type="text" value="<%= rent.zip_code %>">
+  <input id="zip" type="text" value="" required>
 </div>
 
-<div id="formDeposit">
+<div id="form_deposit">
   <label form="deposit">Deposit Total</label>
-  <input id="deposit" type="text" value="<%= rent.deposit_total %>">
+  <input id="deposit" type="text" value="" required>
 </div>
 
-<div id="formRemainingDeposit">
+<div id="form_remaining_deposit">
   <label form="remaining_deposit">Remaining Deposit</label>
-  <input id="remaining_deposit" type="text" value="<%= rent.remainder %>">
+  <input id="remaining_deposit" type="text" value="" required>
 </div>
+
+<div id="form_submit">
+  <input id="submit" type="submit" value="Submit">
+</div>
+
+<% } else { %>
+
+<div id="form_total">
+  <label for="total">Rent Total</label>
+  <input id="total" type="text" value="<%= rent.rent_total %>" required>
+</div>
+
+<div id="form_day">
+  <label for="day">Day</label>
+  <input id="day" type="text" value="<%= rent.day %>" required>
+</div>
+
+<div id="form_address">
+  <label for="address">Address</label>
+  <input id="address" type="text" value="<%= rent.street_address %>" required>
+</div>
+
+<div id="form_city">
+  <label for="city">City</label>
+  <input id="city" type="text" value="<%= rent.city %>" required>
+</div>
+
+<%- include ('states_dropdown') %>
+
+<div id="form_zip">
+  <label for="zip">Zip</label>
+  <input id="zip" type="text" value="<%= rent.zip_code %>" required>
+</div>
+
+<div id="form_deposit">
+  <label form="deposit">Deposit Total</label>
+  <input id="deposit" type="text" value="<%= rent.deposit_total %>" required>
+</div>
+
+<div id="form_remaining_deposit">
+  <label form="remaining_deposit">Remaining Deposit</label>
+  <input id="remaining_deposit" type="text" value="<%= rent.remainder %>" required>
+</div>
+
+<div id="form_submit">
+  <input id="submit" type="submit" value="Submit">
+</div>
+
+<% } %>

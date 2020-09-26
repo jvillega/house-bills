@@ -16,9 +16,19 @@ router.get('/rents',function(req,res) {
 
 // rents post route
 router.post('/rents',function(req,res) {
-  if (req.body.type===undefined) {
+  if (req.body.type==='blank') {
+    res.render('emma/snippets/rent_form.ejs',{rent:undefined});
+  } else if (req.body.type==='get') {
     emma_functions.GetRent(req.body.id,function(err,rent) {
       res.render('emma/snippets/rent_form.ejs',{rent:rent});
+    });
+  } else if (req.body.type==='update') {
+    emma_functions.UpdateRent(req.body,function(err) {
+      res.render('emma/snippets/message.ejs',{message:'success'});
+    });
+  } else if (req.body.type==='add') {
+    emma_functions.AddRent(req.body,function(err) {
+      res.render('emma/snippets/message.ejs',{message:'success'});
     });
   }
 });
@@ -32,14 +42,41 @@ router.get('/tenants',function(req,res) {
 
 // tenants post route
 router.post('/tenants',function(req,res) {
-  emma_functions.GetTenantsByRent(req.body.rent,function(err,tenants) {
-    res.render('emma/snippets/tenants_form.ejs',{tenants:tenants});
-  });
+  if (req.body.type==='locations') {
+    emma_functions.GetTenantsByRent(req.body.rent,function(err,tenants) {
+      res.render('emma/snippets/tenants_dropdown.ejs',{tenants:tenants});
+    });
+  } else if (req.body.type==='tenant') {
+    emma_functions.GetTenantByID(req.body,function (err,rents,tenant) {
+      res.render('emma/snippets/tenants_form.ejs',{rents:rents,tenant:tenant});
+    });
+  }
 });
 
 // utilities get route
 router.get('/utilities',function(req,res) {
-  res.render('emma/utilities.ejs');
+  emma_functions.GetRents(function(err,rents) {
+    res.render('emma/utilities.ejs',{rents:rents});
+  });
+});
+
+// utilities post routes
+router.post('/utilities',function(req,res) {
+  if (req.body.type==='locations') {
+    emma_functions.GetUtilitiesByRent(req.body.rent,function(err,utilities) {
+      res.render('emma/snippets/utilities_form.ejs',{utilities:utilities});
+    });
+  } else if (req.body.type==='utilities') {
+    emma_functions.GetUtilityByID(req.body.utility,function(err,utility_info) {
+      res.render('emma/snippets/utility_form.ejs',{utility_info:utility_info});
+    });
+  } else if (req.body.type==='year') {
+    emma_functions.GetUtilityBillsByUtilityAndYear(req.body,function(err,utility_year_info) {
+      res.render('emma/snippets/utility_bills.ejs',{utility_year_info:utility_year_info});
+    });
+  } else if (req.body.type==='new') {
+    res.render('emma/snippets/utility_bills.ejs',{utility_year_info:undefined});
+  }
 });
 
 // rent-payments get route

@@ -1,0 +1,11 @@
+<%- include ('add',{page:'Utility'}) %>
+
+<div id="form_utilities">
+  <label for="utilities">Utilities</label>
+  <select id="utilities_dropdown">
+    <option value="" selected disabled>please select</option>
+    <% for (var i=0;i<utilities.length;i++) { %>
+      <option value="<%= utilities[i].id %>"><%= utilities[i].name %></option>
+    <% } %>
+  </select>
+</div>

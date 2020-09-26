@@ -1,9 +1,32 @@
-<div id="formRents">
-  <label for="tenants_dropdown">Tenants</label>
-  <select id="tenant_dropdown" required="true">
-    <option value="" disabled selected>Please select a tenant</option>
-    <% for (var i=0;i<tenants.length;i++) { %>
-      <option value="<%= tenants[i].id %>"><%= tenants[i].first_name %> <%= tenants[i].last_name %></option>
+<% if (tenant===undefined) { %>
+
+<div id="">
+  <label for=""></label>
+  <input id="" type="text" value="">
+</div>
+
+<% } else { %>
+
+<div id="form_locations_tenant">
+  <label for="locations">Locations:</label>
+  <select id="locations_dropdown_tenant">
+    <option value="" disabled selected>Please select a location</option>
+    <% for (var i=0;i<rents.length;i++) { %>
+      <option value="<%= rents[i].id %>"><%= rents[i].street_address %> <%= rents[i].city %> <%= rents[i].state %> <%= rents[i].zip_code %></option>
     <% } %>
   </select>
 </div>
+
+<div id="form_first_name">
+  <label for="first_name">First Name:</label>
+  <input id="first_name" type="text" value="<%= tenant.first_name %>">
+</div>
+
+<div id="form_last_name">
+  <label for="last_name">Last Name:</label>
+  <input id="last_name" type="text" value="<%= tenant.last_name %>">
+</div>
+
+<%- include ('months_dropdown') %>
+
+<% } %>

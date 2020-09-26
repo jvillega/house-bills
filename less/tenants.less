@@ -1,0 +1,140 @@
+div.content.tenants {
+  width: 80%;
+  margin: 25px auto 0px auto;
+  .flex-display();
+  text-align: center;
+  form#tenants_form {
+    width: 100%;
+    margin: 0 auto;
+    .flex-display();
+    @media (min-width: @screen-sm-min) {
+      width: 60%;
+    }
+    div.add_container {
+      width: 100%;
+      @media (min-width: @screen-sm-min) {
+        width: 50%;
+      }
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        text-align: left;
+      }
+      button {
+        width: 90%;
+        .button-styler();
+      }
+    }
+    #form_locations {
+      width: 100%;
+      @media (min-width: @screen-sm-min) {
+        width: 50%;
+      }
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 0 auto 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+    #form_tenants {
+      width: 100%;
+      margin-top: 25px;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 50%;
+        margin: 0 auto 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 50%;
+        max-width: 50%;
+      }
+    }
+    #form_locations_tenant {
+      width: 100%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 50%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 50%;
+        max-width: 50%;
+      }
+    }
+    #form_first_name {
+      width: 50%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      input {
+        width: 90%;
+        margin: 0 auto;
+        .input-styler();
+      }
+    }
+    #form_last_name {
+      width: 50%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      input {
+        width: 90%;
+        margin: 0 auto;
+        .input-styler();
+      }
+    }
+    #form_month {
+      width: 50%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+    #form_year {
+      width: 50%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+  }
+}

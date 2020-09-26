@@ -1,0 +1,48 @@
+<%
+// Convert month int to month string
+// Precondition: month is an int
+// Postcondition: month int converted to month string returned
+function monthToText(month) {
+  var months={'1':'January','2':'February','3':'March','4':'April','5':'May','6':'June','7':'July','8':'August','9':'September',
+  '10':'October','11':'November','12':'December'}
+
+  return months[month];
+}
+%>
+
+<% if (utility_year_info!=undefined) { %>
+
+  <%- include ('add',{page:'Utility Bill'}) %>
+
+  <% for (var i=0;i<utility_year_info.length;i++) { %>
+    <span class="month_title" data-id="<%= utility_year_info[i].id %>"><%= monthToText(utility_year_info[i].month) %></span>
+    <div id="form_utility_amount">
+      <label for="utility_amount">Amount</label>
+      <input id="utility_amount" type="text" value="<%= utility_year_info[i].amount %>">
+    </div>
+
+    <%- include ('date',{page:'utility bills',month:utility_year_info[i].month,day:utility_year_info[i].day,year:utility_year_info[i].year}) %>
+
+  <% } %>
+
+  <div id="form_update">
+    <input id="update" type="submit" value="Update">
+  </div>
+
+<% } else { %>
+  <div id="form_utility_name_add">
+    <label for="utility_name">Utility</label>
+    <input id="utility_name" type="text" value="">
+  </div>
+
+  <div id="form_utility_amount">
+    <label for="utility_amount">Amount</label>
+    <input id="utility_amount" type="text" value="">
+  </div>
+
+  <%- include ('date',{page:'utility bills'}) %>
+
+  <div id="form_update">
+    <input id="add" type="submit" value="Add">
+  </div>
+<% } %>

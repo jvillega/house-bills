@@ -3,9 +3,7 @@ use bills;
 create table if not exists rent (
   id int auto_increment primary key,
   rent_total int,
-  month int,
-  day int,
-  year int
+  day int
 );
 
 create table if not exists tenants (
@@ -59,11 +57,19 @@ create table if not exists deposit_payments (
 
 create table if not exists utilities (
   id int auto_increment primary key,
+  rent int,
   name text,
+  foreign key (rent) references rent (id) on delete cascade
+);
+
+create table if not exists utility_bills (
+  id int auto_increment primary key,
+  utility int,
   amount int,
   month int,
   day int,
-  year int
+  year int,
+  foreign key (utility) references utilities (id) on delete cascade
 );
 
 create table if not exists utility_payments (

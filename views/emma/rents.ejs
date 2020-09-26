@@ -3,20 +3,12 @@
 <%- include ('header',{js_include:js_include}) %>
 
 <div class="content rents">
-  <div class="add_container">
-    <button id="add_tenant">Add</button>
-  </div>
+  <form id="rent_form">
+    
+    <%- include ('snippets/add',{page:'rent'}) %>
 
-  <form id="tenants-form">
-    <div id="formRents">
-      <label for="rents">Locations</label>
-      <select id="rents_dropdown" required="true">
-        <option value="" disabled selected>Please select a location</option>
-        <% for (var i=0;i<rents.length;i++) { %>
-          <option value="<%= rents[i].id %>"><%= rents[i].street_address %> <%= rents[i].city %> <%= rents[i].state %> <%= rents[i].zip_code %></option>
-        <% } %>
-      </select>
-    </div>
+    <%- include ('snippets/locations_dropdown') %>
+
   </form>
 </div>
 

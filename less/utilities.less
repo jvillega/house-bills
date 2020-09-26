@@ -1,16 +1,35 @@
-div.content.rents {
+div.content.utilities {
   width: 80%;
   margin: 25px auto 0px auto;
   .flex-display();
   text-align: center;
-  form#rent_form {
+  form#utilities_form {
     width: 100%;
     margin: 0 auto;
     .flex-display();
     @media (min-width: @screen-sm-min) {
       width: 60%;
     }
-    div.add_container {
+    #form_locations {
+      width: 100%;
+      margin: 0 auto 25px auto;
+      @media (min-width: @screen-sm-min) {
+        width: 100%;
+      }
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+    div.add_container_utility {
       width: 100%;
       @media (min-width: @screen-sm-min) {
         width: 50%;
@@ -27,7 +46,7 @@ div.content.rents {
         .button-styler();
       }
     }
-    #form_locations {
+    #form_utilities {
       width: 100%;
       @media (min-width: @screen-sm-min) {
         width: 50%;
@@ -43,96 +62,74 @@ div.content.rents {
       select {
         width: 90%;
         max-width: 90%;
+        text-transform: capitalize;
+        option {
+          text-transform: capitalize;
+        }
       }
     }
-    #form_total {
+    div.add_container_utility_bill {
       width: 100%;
-      margin: 25px auto 0 auto;
+      margin: 0 auto;
       @media (min-width: @screen-sm-min) {
         width: 50%;
       }
       label {
         color: @secondary-color;
         display: block;
+        width: 90%;
+        margin: 10px auto 0 auto;
         text-align: left;
+      }
+      button {
+        width: 90%;
+        .button-styler();
+      }
+    }
+    #form_utility_name{
+      width: 50%;
+      label {
+        color: @secondary-color;
+        display: block;
         width: 90%;
         margin: 10px auto;
+        text-align: left;
       }
       input {
         width: 90%;
         margin: 0 auto;
         .input-styler();
+        text-transform: capitalize;
       }
     }
-    #form_day {
+    #form_utility_name_add{
       width: 100%;
-      margin: 25px auto 0 auto;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      input {
+        width: 90%;
+        margin: 0 auto;
+        .input-styler();
+        text-transform: capitalize;
+      }
+    }
+    #form_year{
+      width: 100%;
+      margin: 0 auto;
       @media (min-width: @screen-sm-min) {
         width: 50%;
       }
       label {
         color: @secondary-color;
         display: block;
-        text-align: left;
         width: 90%;
         margin: 10px auto;
-      }
-      input {
-        width: 90%;
-        margin: 0 auto;
-        .input-styler();
-      }
-    }
-    #form_address {
-      width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 40%;
-      }
-      label {
-        color: @secondary-color;
-        display: block;
         text-align: left;
-        width: 90%;
-        margin: 10px auto;
-      }
-      input {
-        width: 90%;
-        margin: 0 auto;
-        .input-styler();
-      }
-    }
-    #form_city {
-      width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 20%;
-      }
-      label {
-        color: @secondary-color;
-        display: block;
-        text-align: left;
-        width: 90%;
-        margin: 10px auto;
-      }
-      input {
-        width: 90%;
-        margin: 0 auto;
-        .input-styler();
-      }
-    }
-    #form_state {
-      width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 25%;
-      }
-      label {
-        color: @secondary-color;
-        display: block;
-        text-align: left;
-        width: 90%;
-        margin: 10px auto;
       }
       .select-styler();
       select {
@@ -140,18 +137,22 @@ div.content.rents {
         max-width: 90%;
       }
     }
-    #form_zip {
+    span.month_title {
       width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 15%;
-      }
+      margin-top: 10px;
+      color: @secondary-color;
+      text-align: left;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    #form_utility_amount {
+      width: 25%;
       label {
         color: @secondary-color;
         display: block;
-        text-align: left;
         width: 90%;
         margin: 10px auto;
+        text-align: left;
       }
       input {
         width: 90%;
@@ -159,54 +160,61 @@ div.content.rents {
         .input-styler();
       }
     }
-    #form_deposit {
-      width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 50%;
-      }
+    #form_month_utility_bills {
+      width: 25%;
       label {
         color: @secondary-color;
         display: block;
-        text-align: left;
         width: 90%;
         margin: 10px auto;
+        text-align: left;
       }
-      input {
+      .select-styler();
+      select {
         width: 90%;
         margin: 0 auto;
-        .input-styler();
+        max-width: 90%;
       }
     }
-    #form_remaining_deposit {
-      width: 100%;
-      margin: 0 auto;
-      @media (min-width: @screen-sm-min) {
-        width: 50%;
-      }
+    #form_day_utility_bills {
+      width: 25%;
       label {
         color: @secondary-color;
         display: block;
-        text-align: left;
         width: 90%;
         margin: 10px auto;
+        text-align: left;
       }
-      input {
+      .select-styler();
+      select {
         width: 90%;
         margin: 0 auto;
-        .input-styler();
+        max-width: 90%;
       }
     }
-    #form_submit {
+    #form_year_utility_bills {
+      width: 25%;
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 90%;
+      }
+    }
+    #form_update {
       width: 100%;
       margin-top: 25px;
-      label {}
-      input {
-        width: 90%;
-        .button-styler();
-        @media (min-width: @screen-sm-min) {
-          width: 50%;
-        }
+      #update,#add {
+        width: 50%;
+        margin: 0 auto;
+        .button-styler()
       }
     }
   }
