@@ -16,6 +16,7 @@ router.get('/',function(req,res) {
 router.post('/',function(req,res,err) {
   if (req.body.type==='rent') {
     bills_functions.UpdateRentPayment(req.body,function(err,rent_payment) {
+      console.log(rent_payment);
       res.render('snippets/rent_payment.ejs',{rent_payment:rent_payment});
     });
   } else {

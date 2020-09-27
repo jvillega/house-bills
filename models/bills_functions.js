@@ -196,7 +196,7 @@ var GetUtilityPayments=function(utility_ids,next_month,callback) {
 }
 
 var UpdateUtilityPayment=function(payment_info,callback) {
-  var query='update utility_payments set month='+payment_info.month+', day='+payment_info.day+', year='+payment_info.year+', payed='+payment_info.payed+', total='+payment_info.total+' where tenant='+payment_info.tenant+' and utility='+payment_info.utility+' and month='+payment_info.month+';';
+  var query='update utility_payments set upayment_month='+payment_info.month+', upayment_day='+payment_info.day+', upayment_year='+payment_info.year+', upayment_payed='+payment_info.payed+', upayment_total='+payment_info.total+' where tenant='+payment_info.tenant+' and utility='+payment_info.utility+' and upayment_month='+payment_info.month+';';
 
   connection.query(query,function(err) {
     if (err) {
@@ -227,7 +227,9 @@ var GetUtilityPayment=function(tenant,utility,month,callback) {
 }
 
 var UpdateRentPayment=function(payment_info,callback) {
-  var query='update rent_payments set month='+payment_info.month+', day='+payment_info.day+', year='+payment_info.year+', payed='+payment_info.payed+', total='+payment_info.total+' where tenant='+payment_info.tenant+' and month='+payment_info.month+';';
+  var query='update rent_payments set rpayment_month='+payment_info.month+', rpayment_day='+payment_info.day+', rpayment_year='+payment_info.year+', rpayment_payed='+payment_info.payed+', rpayment_total='+payment_info.total+' where tenant='+payment_info.tenant+' and rpayment_month='+payment_info.month+';';
+
+  console.log(query);
 
   connection.query(query,function(err) {
     if (err) {
@@ -241,7 +243,7 @@ var UpdateRentPayment=function(payment_info,callback) {
 }
 
 var GetRentPayment=function(tenant,month,callback) {
-  var query='select * from rent_payments where tenant='+tenant+' and month='+month+';';
+  var query='select * from rent_payments where tenant='+tenant+' and rpayment_month='+month+';';
 
   connection.query(query,function(err,rent_payment) {
     if (err) {

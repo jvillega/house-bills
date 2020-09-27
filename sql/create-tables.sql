@@ -1,5 +1,18 @@
 use bills;
 
+drop table if exists utility_payments;
+drop table if exists utility_bills;
+drop table if exists utilities;
+
+drop table if exists deposit_payments;
+drop table if exists deposit;
+
+drop table if exists rent_payments;
+drop table if exists address;
+drop table if exists tenants;
+drop table if exists rent;
+
+
 create table if not exists rent (
   id int auto_increment primary key,
   rent_total int,
@@ -7,6 +20,7 @@ create table if not exists rent (
 );
 
 create table if not exists rent_bills (
+  id int auto_increment primary key,
   rent int,
   month int,
   year int,
@@ -27,12 +41,13 @@ create table if not exists address (
   city text,
   state text,
   zip_code text,
-  foreign key (rent) references rent (id) on delete cascade
+  foreign key (rent	) references rent (id) on delete cascade
 );
 
 create table if not exists rent_payments (
   tenant int,
   rent int,
+  rpayment_bill int,
   rpayment_month int,
   rpayment_day int,
   rpayment_year int,
@@ -40,7 +55,8 @@ create table if not exists rent_payments (
   rpayment_total int,
   rpayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
-  foreign key (rent) references rent (id) on delete cascade
+  foreign key (rent) references rent (id) on delete cascade,
+  foreign key (rpayment_bill) references rent_bills (id) on delete cascade
 );
 
 create table deposit (
@@ -82,6 +98,7 @@ create table if not exists utility_bills (
 create table if not exists utility_payments (
   tenant int,
   utility int,
+  upayment_bill int,
   upayment_month int,
   upayment_day int,
   upayment_year int,
@@ -90,4 +107,5 @@ create table if not exists utility_payments (
   upayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
   foreign key (utility) references utilities (id) on delete cascade
+  foreign key (upayment_bill) references utility_bills (id) on delete cascade
 );
