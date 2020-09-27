@@ -95,7 +95,7 @@
           <span class="section_sub_title">Utilities</span>
           <% for (var x=0;x<utility_payments.length;x++) { %>
             <% if (tenants[j].id===utility_payments[x].tenant) { %>
-              <% if (utility_payments[x].payed===1) { %>
+              <% if (utility_payments[x].upayment_payed===1) { %>
                 <div class="utility_payment">
                   <div class="utility_payment_name">
                     <span><%= utility_payments[x].name %></span>

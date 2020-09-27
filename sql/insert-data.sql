@@ -66,14 +66,14 @@ insert into utility_payments values (2,1,9,7,2020,true,25,25);
 insert into utility_payments values (2,2,9,15,2020,true,30,25);
 insert into utility_payments values (2,3,9,5,2020,true,17.5,25);
 insert into utility_payments values (2,4,9,5,2020,true,22.5,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,1,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,2,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,3,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,4,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,1,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,2,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,3,9,true,25);
-insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,4,9,true,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,1,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,2,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,3,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (3,4,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,1,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,2,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,3,9,false,25);
+insert into utility_payments (tenant,utility,upayment_month,upayment_payed,upayment_percentage) values (4,4,9,false,25);
 
 
 
