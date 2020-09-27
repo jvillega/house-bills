@@ -3,7 +3,14 @@ use bills;
 create table if not exists rent (
   id int auto_increment primary key,
   rent_total int,
-  day int
+  due_day int
+);
+
+create table if not exists rent_bills (
+  rent int,
+  month int,
+  year int,
+  foreign key (rent) references rent (id) on delete cascade
 );
 
 create table if not exists tenants (
@@ -26,12 +33,12 @@ create table if not exists address (
 create table if not exists rent_payments (
   tenant int,
   rent int,
-  month int,
-  day int,
-  year int,
-  payed bool,
-  total int,
-  percentage int,
+  rpayment_month int,
+  rpayment_day int,
+  rpayment_year int,
+  rpayment_payed bool,
+  rpayment_total int,
+  rpayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
   foreign key (rent) references rent (id) on delete cascade
 );
@@ -75,12 +82,12 @@ create table if not exists utility_bills (
 create table if not exists utility_payments (
   tenant int,
   utility int,
-  month int,
-  day int,
-  year int,
-  payed bool,
-  total int,
-  percentage int,
+  upayment_month int,
+  upayment_day int,
+  upayment_year int,
+  upayment_payed bool,
+  upayment_total int,
+  upayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
   foreign key (utility) references utilities (id) on delete cascade
 );

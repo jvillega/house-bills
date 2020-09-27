@@ -2,22 +2,22 @@ var mysql=require('mysql');
 var books=require('./bills.js');
 var connection=mysql.createConnection(books.config);
 
-exports.GetAllInformation=function(next_month,callback) {
-  GetRent(function (err,rent) {
+exports.GetAllInformation=function(rent_id,next_month,callback) {
+  GetRent(rent_id,next_month,function (err,rent_info) {
     if (err) {
       console.log(err);
       callback(true);
       return;
     }
 
-    GetDeposit(rent.id,function (err,deposit) {
+    GetDeposit(rent_id,function (err,deposit) {
       if (err) {
         console.log(err);
         callback(true);
         return;
       }
 
-      GetUtilities(next_month,function (err,utilities) {
+      GetUtilities(rent_id,next_month,function (err,utilities) {
         if (err) {
           console.log(err);
           callback(false);
@@ -26,31 +26,32 @@ exports.GetAllInformation=function(next_month,callback) {
 
         var utility_ids=[];
         for (var i=0;i<utilities.length;i++) {
-          utility_ids.push(utilities[i].id);
+          utility_ids.push(utilities[i].utility);
         }
+        console.log(utility_ids);
 
-        GetTenants(rent.id,function (err,tenants) {
+        GetTenants(rent_id,function (err,tenants) {
           if (err) {
             console.log(err);
             callback(false);
             return;
           }
 
-          GetRentPayments(rent.id,function (err,rent_payments) {
+          GetRentPayments(rent_id,next_month,function (err,rent_payments) {
             if (err) {
               console.log(err);
               callback(false);
               return;
             }
 
-            GetUtilityPayments(utility_ids,function(err,utility_payments) {
+            GetUtilityPayments(utility_ids,next_month,function(err,utility_payments) {
               if (err) {
                 console.log(err);
                 callback(false);
                 return;
               }
 
-              callback(false,rent,deposit,utilities,tenants,rent_payments,utility_payments);
+              callback(false,rent_info,deposit,utilities,tenants,rent_payments,utility_payments);
             });
           });
         });
@@ -100,17 +101,17 @@ exports.UpdateRentPayment=function(payment_info,callback) {
 }
 
 // HELPERS
-var GetRent=function(callback) {
-  var query='select * from rent where id=1;';
+var GetRent=function(rent_id,next_month,callback) {
+  var query='select rent.*,address.*,rent_bills.* from rent inner join address on rent.id=address.rent inner join rent_bills on rent.id=rent_bills.rent where rent.id='+rent_id+' and month='+next_month+';';
 
-  connection.query(query,function(err,rent) {
+  connection.query(query,function(err,rent_info) {
     if (err) {
       console.log(err);
       callback(true);
       return;
     }
 
-    callback(false,rent[0]); // return first index, can only have one rent per location
+    callback(false,rent_info[0]); // return first index, can only have one rent and address per location
   });
 }
 
@@ -128,8 +129,8 @@ var GetDeposit=function(rent_id,callback) {
   });
 }
 
-var GetUtilities=function(next_month,callback) {
-  var query='select * from utilities where month='+next_month+';';
+var GetUtilities=function(rent_id,next_month,callback) {
+  var query='select utilities.*,utility_bills.* from utilities inner join utility_bills on utilities.id=utility_bills.utility where utilities.rent='+rent_id+' and utility_bills.month='+next_month+' order by utilities.id asc;';
 
   connection.query(query,function(err,utilities) {
     if (err) {
@@ -156,8 +157,8 @@ var GetTenants=function(rent_id,callback) {
   });
 }
 
-var GetRentPayments=function(rent_id,callback) {
-  var query='select * from rent_payments where rent='+rent_id+';';
+var GetRentPayments=function(rent_id,next_month,callback) {
+  var query='select * from rent_payments where rent='+rent_id+' and rpayment_month='+next_month+';';
 
   connection.query(query,function(err,rent_payments) {
     if (err) {
@@ -170,18 +171,18 @@ var GetRentPayments=function(rent_id,callback) {
   });
 }
 
-var GetUtilityPayments=function(utility_ids,callback) {
-  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility=';
-
-  console.log(utility_ids);
+var GetUtilityPayments=function(utility_ids,next_month,callback) {
+  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where (utility=';
 
   for (var i=0;i<utility_ids.length;i++) {
     if (i===utility_ids.length-1) {
-      query+=utility_ids[i]+';';
+      query+=utility_ids[i]+') and utility_payments.upayment_month='+(next_month-1)+';';
     } else {
       query+=utility_ids[i]+' or utility=';
     }
   }
+
+  console.log(query);
 
   connection.query(query,function(err,utility_payments) {
     if (err) {
