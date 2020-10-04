@@ -97,6 +97,7 @@
         <div class="utility_payments">
           <span class="section_sub_title">Utilities</span>
           <% for (var i=0;i<utilities.length;i++) { %>
+            <% uflag=0 %>
             <% for (var x=0;x<utility_payments.length;x++) { %>
               <% if (tenants[j].id===utility_payments[x].tenant && utilities[i].id===utility_payments[x].utility) { %>
                 <% uflag=1 %>
@@ -118,7 +119,6 @@
                   </div>
                 </div>
               <% } %>
-              <% uflag=0 %>
             <% } %>
             <% if (uflag===0) { %>
               <div class="utility_payment not_payed">
