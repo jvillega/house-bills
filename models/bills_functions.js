@@ -69,7 +69,7 @@ exports.UpdateUtilityPayment=function(payment_info,callback) {
       return;
     }
 
-    GetUtilityPayment(payment_info.tenant,payment_info.utility,payment_info.month,function(err,utility_payment) {
+    GetUtilityPayment(payment_info.tenant,payment_info.bill,function(err,utility_payment) {
       if (err) {
         console.log(err);
         callback(true);
@@ -195,7 +195,8 @@ var GetUtilityPayments=function(utility_bills,next_month,callback) {
 }
 
 var UpdateUtilityPayment=function(payment_info,callback) {
-  var query='update utility_payments set upayment_month='+payment_info.month+', upayment_day='+payment_info.day+', upayment_year='+payment_info.year+', upayment_payed='+payment_info.payed+', upayment_total='+payment_info.total+' where tenant='+payment_info.tenant+' and utility='+payment_info.utility+' and upayment_month='+payment_info.month+';';
+  var query='insert into utility_payments values ('+payment_info.tenant+','+payment_info.utility+','+payment_info.bill+','+payment_info.month+','+payment_info.day+','+payment_info.year+','+payment_info.payed+','+payment_info.total+','+payment_info.percentage+');';
+  // var query='update utility_payments set upayment_month='+payment_info.month+', upayment_day='+payment_info.day+', upayment_year='+payment_info.year+', upayment_payed='+payment_info.payed+', upayment_total='+payment_info.total+' where tenant='+payment_info.tenant+' and utility='+payment_info.utility+' and upayment_month='+payment_info.month+';';
 
   connection.query(query,function(err) {
     if (err) {
@@ -208,9 +209,9 @@ var UpdateUtilityPayment=function(payment_info,callback) {
   });
 }
 
-var GetUtilityPayment=function(tenant,utility_bills,month,callback) {
-  console.log(utility_bills)
-  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility_payments.tenant='+tenant+' and utility_payments.utility='+utility+' and utility_payments.month='+month+';';
+var GetUtilityPayment=function(tenant,bill,callback) {
+  var query='select utilities.name,utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility_payments.tenant='+tenant+' and utility_payments.upayment_bill='+bill+';';
+  // var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility_payments.tenant='+tenant+' and utility_payments.utility='+utility+' and utility_payments.month='+month+';';
 
   connection.query(query,function(err,utility_payment) {
     if (err) {

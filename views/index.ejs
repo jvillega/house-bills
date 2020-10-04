@@ -91,7 +91,7 @@
               <span>Pecentage: </span>
               <span class="rent_payment_percentage_value">25%</span>
             </div>
-            <button id="rent_button_<%= k %>" class="payed" data-tenant="<%= tenants[j].id %>" data-total="<%= %>" data-type="rent" data-rent-id="<%= rent_info.id %>" data-rbill="<%= rent_info.rbill_id %>">Payed</button>
+            <button id="rent_button_<%= k %>" class="payed" data-tenant="<%= tenants[j].id %>" data-total="<%= %>" data-type="rent" data-rent-id="<%= rent_info.id %>" data-bill="<%= rent_info.rbill_id %>">Payed</button>
           </div>
         <% } %>
         <div class="utility_payments">
@@ -133,7 +133,7 @@
                   <span>Pecentage: </span>
                   <span class="utility_payment_percentage_value">25%</span>
                 </div>
-                <button id="utility_button_<%= x %>" class="payed" data-tenant="<%= tenants[j].id %>" data-type="utility" data-utility="<%= utilities[i].id %>">Payed</button>
+                <button id="utility_button_<%= x %>" class="payed" data-tenant="<%= tenants[j].id %>" data-type="utility" data-utility="<%= utilities[i].id %>" data-bill="<%= utilities[i].ubill_id %>">Payed</button>
               </div>
             <% } %>
           <% } %>

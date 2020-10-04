@@ -8,7 +8,7 @@ $(document).ready(function () {
       tenant: $(this).attr('data-tenant'),
       rent: $(this).attr('data-rent-id'),
       type: $(this).attr('data-type'),
-      bill: $(this).attr('data-rbill'),
+      bill: $(this).attr('data-bill'),
       month: (date.getMonth()+1).toString(),
       day: date.getDate().toString(),
       year: date.getFullYear().toString(),
