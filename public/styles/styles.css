@@ -15,7 +15,7 @@ div.content.index div.rent {
 }
 @media (min-width: 767px) {
   div.content.index div.rent {
-    width: 50%;
+    width: 20%;
   }
 }
 div.content.index div.rent span.section_title {
@@ -45,7 +45,7 @@ div.content.index div.deposit {
 }
 @media (min-width: 767px) {
   div.content.index div.deposit {
-    width: 50%;
+    width: 20%;
   }
 }
 div.content.index div.deposit span.section_title {
@@ -74,6 +74,11 @@ div.content.index div.utilities {
   margin-bottom: 25px;
   display: flex;
   flex-wrap: wrap;
+}
+@media (min-width: 767px) {
+  div.content.index div.utilities {
+    width: 60%;
+  }
 }
 div.content.index div.utilities span.section_title {
   width: 100%;
@@ -125,7 +130,7 @@ div.content.index div.tenants div.tenant {
 }
 @media (min-width: 767px) {
   div.content.index div.tenants div.tenant {
-    width: 33.33%;
+    width: 25%;
   }
 }
 div.content.index div.tenants div.tenant div.name {
