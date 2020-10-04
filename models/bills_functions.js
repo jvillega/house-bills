@@ -185,8 +185,6 @@ var GetUtilityPayments=function(utility_bills,next_month,callback) {
     }
   }
 
-  console.log(query);
-
   connection.query(query,function(err,utility_payments) {
     if (err) {
       console.log(err);
