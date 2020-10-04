@@ -1,13 +1,13 @@
 use bills;
 
+-- drop tables commands
 drop table if exists utility_payments;
 drop table if exists utility_bills;
 drop table if exists utilities;
-
 drop table if exists deposit_payments;
 drop table if exists deposit;
-
 drop table if exists rent_payments;
+drop table if exists rent_bills;
 drop table if exists address;
 drop table if exists tenants;
 drop table if exists rent;
@@ -20,10 +20,10 @@ create table if not exists rent (
 );
 
 create table if not exists rent_bills (
-  id int auto_increment primary key,
+  rbill_id int auto_increment primary key,
   rent int,
-  month int,
-  year int,
+  rbill_month int,
+  rbill_year int,
   foreign key (rent) references rent (id) on delete cascade
 );
 
@@ -47,7 +47,7 @@ create table if not exists address (
 create table if not exists rent_payments (
   tenant int,
   rent int,
-  rpayment_bill int,
+  rbill int,
   rpayment_month int,
   rpayment_day int,
   rpayment_year int,
@@ -56,7 +56,7 @@ create table if not exists rent_payments (
   rpayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
   foreign key (rent) references rent (id) on delete cascade,
-  foreign key (rpayment_bill) references rent_bills (id) on delete cascade
+  foreign key (rbill) references rent_bills (rbill_id) on delete cascade
 );
 
 create table deposit (
@@ -86,12 +86,12 @@ create table if not exists utilities (
 );
 
 create table if not exists utility_bills (
-  id int auto_increment primary key,
+  ubill_id int auto_increment primary key,
   utility int,
-  amount int,
-  month int,
-  day int,
-  year int,
+  ubill_amount int,
+  ubill_month int,
+  ubill_day int,
+  ubill_year int,
   foreign key (utility) references utilities (id) on delete cascade
 );
 
@@ -106,6 +106,6 @@ create table if not exists utility_payments (
   upayment_total int,
   upayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
-  foreign key (utility) references utilities (id) on delete cascade
+  foreign key (utility) references utilities (id) on delete cascade,
   foreign key (upayment_bill) references utility_bills (id) on delete cascade
 );

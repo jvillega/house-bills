@@ -14,7 +14,7 @@
 
     <div class="rent_due_date">
       <span>Due: </span>
-      <span id="rent_due"><%= rent_info.month %>/<%= rent_info.due_day %>/<%= rent_info.year %></span>
+      <span id="rent_due"><%= rent_info.rbill_month %>/<%= rent_info.due_day %>/<%= rent_info.rbill_year %></span>
     </div>
   </div>
 
@@ -40,11 +40,11 @@
         </div>
         <div class="utility_amount">
           <span>Amount: </span>
-          <span class="utility_amount_value"><%= utilities[i].amount %></span>
+          <span class="utility_amount_value"><%= utilities[i].ubill_amount %></span>
         </div>
         <div class="utility_due_date">
           <span>Due: </span>
-          <span class="utility_due_date_value"><%= utilities[i].month %>/<%= utilities[i].day %>/<%= utilities[i].year %></span>
+          <span class="utility_due_date_value"><%= utilities[i].ubill_month %>/<%= utilities[i].ubill_day %>/<%= utilities[i].ubill_year %></span>
         </div>
       </div>
     <% } %>
@@ -52,86 +52,47 @@
 
   <div class="tenants">
     <span class="section_title">Tenants</span>
+    <% var rflag %>
     <% for (var j=0;j<tenants.length;j++) { %>
+      <% rflag=0 %>
       <div class="tenant">
         <div class="name">
           <span class="name"><%= tenants[j].first_name %> <%= tenants[j].last_name %></span>
         </div>
         <% for (var k=0;k<rent_payments.length;k++) { %>
           <% if (tenants[j].id===rent_payments[k].tenant) { %>
-            <% if (rent_payments[k].rpayment_payed===1) { %>
-              <div class="rent_payment">
-                <span class="section_sub_title">Rent</span>
-                <div class="rent_payment_total">
-                  <span>Total: </span>
-                  <span class="rent_payment_total_value"><%= rent_payments[k].rpayment_total %></span>
-                </div>
-                <div class="rent_payment_percentage">
-                  <span>Pecentage: </span>
-                  <span class="rent_payment_percentage_value"><%= rent_payments[k].rpayment_percentage %>%</span>
-                </div>
-                <div class="rent_payment_date">
-                  <span>Payed: </span>
-                  <span class="rent_payment_date_value"><%= rent_payments[k].rpayment_month %>/<%= rent_payments[k].rpayment_day %>/<%= rent_payments[k].rpayment_year %></span>
-                </div>
+            <% rflag=1 %>
+            <div class="rent_payment">
+              <span class="section_sub_title">Rent</span>
+              <div class="rent_payment_total">
+                <span>Total: </span>
+                <span class="rent_payment_total_value"><%= rent_payments[k].rpayment_total %></span>
               </div>
-            <% } else { %>
-              <div class="rent_payment not_payed">
-                <span class="section_sub_title">Rent</span>
-                <div class="rent_payment_total">
-                  <span>Total: </span>
-                  <span class="rent_payment_total_value"><%= rent_payments[k].rpayment_total %></span>
-                </div>
-                <div class="rent_payment_percentage">
-                  <span>Pecentage: </span>
-                  <span class="rent_payment_percentage_value"><%= rent_payments[k].rpayment_percentage %>%</span>
-                </div>
-                <button id="rent_button_<%= k %>" class="payed" data-tenant="<%= tenants[j].id %>" data-total="<%= %>" data-type="rent">Payed</button>
+              <div class="rent_payment_percentage">
+                <span>Pecentage: </span>
+                <span class="rent_payment_percentage_value"><%= rent_payments[k].rpayment_percentage %>%</span>
               </div>
-            <% } %>
+              <div class="rent_payment_date">
+                <span>Payed: </span>
+                <span class="rent_payment_date_value"><%= rent_payments[k].rpayment_month %>/<%= rent_payments[k].rpayment_day %>/<%= rent_payments[k].rpayment_year %></span>
+              </div>
+            </div>
           <% } %>
         <% } %>
-        <div class="utility_payments">
-          <span class="section_sub_title">Utilities</span>
-          <% for (var x=0;x<utility_payments.length;x++) { %>
-            <% if (tenants[j].id===utility_payments[x].tenant) { %>
-              <% if (utility_payments[x].upayment_payed===1) { %>
-                <div class="utility_payment">
-                  <div class="utility_payment_name">
-                    <span><%= utility_payments[x].name %></span>
-                  </div>
-                  <div class="utility_payment_total">
-                    <span>Total: </span>
-                    <span><%= utility_payments[x].upayment_total %></span>
-                  </div>
-                  <div class="utility_payment_percentage">
-                    <span>Pecentage: </span>
-                    <span><%= utility_payments[x].upayment_percentage %>%</span>
-                  </div>
-                  <div class="utility_payment_date">
-                    <span>Payed: </span>
-                    <span><%= utility_payments[x].upayment_month %>/<%= utility_payments[x].upayment_day %>/<%= utility_payments[x].upayment_year %></span>
-                  </div>
-                </div>
-              <% } else { %>
-                <div class="utility_payment not_payed">
-                  <div class="utility_payment_name">
-                    <span class="utility_payment_name_value"><%= utility_payments[x].name %></span>
-                  </div>
-                  <div class="utility_payment_total">
-                    <span>Total: </span>
-                    <span class="utility_payment_total_value"></span>
-                  </div>
-                  <div class="utility_payment_percentage">
-                    <span>Pecentage: </span>
-                    <span class="utility_payment_percentage_value"><%= utility_payments[x].upayment_percentage %>%</span>
-                  </div>
-                  <button id="utility_button_<%= x %>" class="payed" data-tenant="<%= tenants[j].id %>" data-type="utility" data-utility="<%= utility_payments[x].utility %>">Payed</button>
-                </div>
-              <% } %>
-            <% } %>
-          <% } %>
-        </div>
+        <% if (rflag===0) { %>
+          <div class="rent_payment not_payed">
+            <span class="section_sub_title">Rent</span>
+            <div class="rent_payment_total">
+              <span>Total: </span>
+              <span class="rent_payment_total_value"></span>
+            </div>
+            <div class="rent_payment_percentage">
+              <span>Pecentage: </span>
+              <span class="rent_payment_percentage_value">25%</span>
+            </div>
+            <button id="rent_button_<%= k %>" class="payed" data-tenant="<%= tenants[j].id %>" data-total="<%= %>" data-type="rent">Payed</button>
+          </div>
+        <% } %>
       </div>
     <% } %>
   </div>

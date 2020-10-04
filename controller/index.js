@@ -6,9 +6,8 @@ var bills_functions=require('../models/bills_functions');
 router.get('/',function(req,res) {
   var next_month=new Date().getMonth()+2; // add two to get next month
 
-  bills_functions.GetAllInformation(1,next_month,function (err,rent_info,deposit,utilities,tenants,rent_payments,utility_payments) {
-    // console.log(utility_payments);
-    res.render('index.ejs',{rent_info:rent_info,deposit:deposit,utilities:utilities,tenants:tenants,rent_payments:rent_payments,utility_payments});
+  bills_functions.GetAllInformation(1,next_month,function (err,rent_info,deposit,utilities,tenants,rent_payments) {
+    res.render('index.ejs',{rent_info:rent_info,deposit:deposit,utilities:utilities,tenants:tenants,rent_payments:rent_payments});
   });
 });
 
@@ -16,7 +15,6 @@ router.get('/',function(req,res) {
 router.post('/',function(req,res,err) {
   if (req.body.type==='rent') {
     bills_functions.UpdateRentPayment(req.body,function(err,rent_payment) {
-      console.log(rent_payment);
       res.render('snippets/rent_payment.ejs',{rent_payment:rent_payment});
     });
   } else {
