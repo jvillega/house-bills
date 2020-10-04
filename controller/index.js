@@ -6,8 +6,8 @@ var bills_functions=require('../models/bills_functions');
 router.get('/',function(req,res) {
   var next_month=new Date().getMonth()+2; // add two to get next month
 
-  bills_functions.GetAllInformation(1,next_month,function (err,rent_info,deposit,utilities,tenants,rent_payments) {
-    res.render('index.ejs',{rent_info:rent_info,deposit:deposit,utilities:utilities,tenants:tenants,rent_payments:rent_payments});
+  bills_functions.GetAllInformation(1,next_month,function (err,rent_info,deposit,utilities,tenants,rent_payments,utility_payments) {
+    res.render('index.ejs',{rent_info:rent_info,deposit:deposit,utilities:utilities,tenants:tenants,rent_payments:rent_payments,utility_payments:utility_payments});
   });
 });
 

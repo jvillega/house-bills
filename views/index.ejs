@@ -52,9 +52,10 @@
 
   <div class="tenants">
     <span class="section_title">Tenants</span>
-    <% var rflag %>
+    <% var rflag,uflag %>
     <% for (var j=0;j<tenants.length;j++) { %>
       <% rflag=0 %>
+      <% uflag=0 %>
       <div class="tenant">
         <div class="name">
           <span class="name"><%= tenants[j].first_name %> <%= tenants[j].last_name %></span>
@@ -93,6 +94,49 @@
             <button id="rent_button_<%= k %>" class="payed" data-tenant="<%= tenants[j].id %>" data-total="<%= %>" data-type="rent">Payed</button>
           </div>
         <% } %>
+        <div class="utility_payments">
+          <span class="section_sub_title">Utilities</span>
+          <% for (var i=0;i<utilities.length;i++) { %>
+            <% for (var x=0;x<utility_payments.length;x++) { %>
+              <% if (tenants[j].id===utility_payments[x].tenant) { %>
+                <% uflag=1 %>
+                <div class="utility_payment">
+                  <div class="utility_payment_name">
+                    <span><%= utilities[i].name %></span>
+                  </div>
+                  <div class="utility_payment_total">
+                    <span>Total: </span>
+                    <span><%= utility_payments[x].upayment_total %></span>
+                  </div>
+                  <div class="utility_payment_percentage">
+                    <span>Pecentage: </span>
+                    <span><%= utility_payments[x].upayment_percentage %>%</span>
+                  </div>
+                  <div class="utility_payment_date">
+                    <span>Payed: </span>
+                    <span><%= utility_payments[x].upayment_month %>/<%= utility_payments[x].upayment_day %>/<%= utility_payments[x].upayment_year %></span>
+                  </div>
+                </div>
+              <% } %>
+            <% } %>
+            <% if (uflag===0) { %>
+              <div class="utility_payment not_payed">
+                <div class="utility_payment_name">
+                  <span class="utility_payment_name_value"><%= utilities[i].name %></span>
+                </div>
+                <div class="utility_payment_total">
+                  <span>Total: </span>
+                  <span class="utility_payment_total_value"></span>
+                </div>
+                <div class="utility_payment_percentage">
+                  <span>Pecentage: </span>
+                  <span class="utility_payment_percentage_value">25%</span>
+                </div>
+                <button id="utility_button_<%= x %>" class="payed" data-tenant="<%= tenants[j].id %>" data-type="utility" data-utility="<%= utilities[i].id %>">Payed</button>
+              </div>
+            <% } %>
+          <% } %>
+        </div>
       </div>
     <% } %>
   </div>

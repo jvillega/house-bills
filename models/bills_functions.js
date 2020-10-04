@@ -45,17 +45,15 @@ exports.GetAllInformation=function(rent_id,next_month,callback) {
               return;
             }
 
-            callback(false,rent_info,deposit,utilities,tenants,rent_payments);
+            GetUtilityPayments(utility_ids,next_month,function(err,utility_payments) {
+              if (err) {
+                console.log(err);
+                callback(false);
+                return;
+              }
 
-            // GetUtilityPayments(utility_ids,next_month,function(err,utility_payments) {
-            //   if (err) {
-            //     console.log(err);
-            //     callback(false);
-            //     return;
-            //   }
-            //
-            //   callback(false,rent_info,deposit,utilities,tenants,rent_payments,utility_payments);
-            // });
+              callback(false,rent_info,deposit,utilities,tenants,rent_payments,utility_payments);
+            });
           });
         });
       });
@@ -175,13 +173,13 @@ var GetRentPayments=function(rent_id,next_month,rbill_id,callback) {
 }
 
 var GetUtilityPayments=function(utility_ids,next_month,callback) {
-  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility=';
+  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where (utility=';
 
   for (var i=0;i<utility_ids.length;i++) {
     if (i===utility_ids.length-1) {
       query+=utility_ids[i]+') and utility_payments.upayment_month='+(next_month-1)+';';
     } else {
-      query+=utility_ids[i]+' or utility=';
+      query+=utility_ids[i]+' or utility_payments.utility=';
     }
   }
 
