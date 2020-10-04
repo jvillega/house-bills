@@ -26,10 +26,12 @@ exports.GetAllInformation=function(rent_id,next_month,callback) {
           return;
         }
 
-        var utility_ids=[];
+        var utility_bills=[];
         for (var i=0;i<utilities.length;i++) {
-          utility_ids.push(utilities[i].utility);
+          utility_bills.push(utilities[i].ubill_id);
         }
+
+        console.log(utility_bills)
 
         GetTenants(rent_id,function (err,tenants) {
           if (err) {
@@ -45,7 +47,7 @@ exports.GetAllInformation=function(rent_id,next_month,callback) {
               return;
             }
 
-            GetUtilityPayments(utility_ids,next_month,function(err,utility_payments) {
+            GetUtilityPayments(utility_bills,next_month,function(err,utility_payments) {
               if (err) {
                 console.log(err);
                 callback(false);
@@ -172,16 +174,18 @@ var GetRentPayments=function(rent_id,next_month,rbill_id,callback) {
   });
 }
 
-var GetUtilityPayments=function(utility_ids,next_month,callback) {
-  var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where (utility=';
+var GetUtilityPayments=function(utility_bills,next_month,callback) {
+  var query='select * from utility_payments where ';
 
-  for (var i=0;i<utility_ids.length;i++) {
-    if (i===utility_ids.length-1) {
-      query+=utility_ids[i]+') and utility_payments.upayment_month='+(next_month-1)+';';
+  for (var i=0;i<utility_bills.length;i++) {
+    if (i===utility_bills.length-1) {
+      query+='upayment_bill='+utility_bills[i]+';';
     } else {
-      query+=utility_ids[i]+' or utility_payments.utility=';
+      query+='upayment_bill='+utility_bills[i]+' or ';
     }
   }
+
+  console.log(query);
 
   connection.query(query,function(err,utility_payments) {
     if (err) {
@@ -208,7 +212,8 @@ var UpdateUtilityPayment=function(payment_info,callback) {
   });
 }
 
-var GetUtilityPayment=function(tenant,utility,month,callback) {
+var GetUtilityPayment=function(tenant,utility_bills,month,callback) {
+  console.log(utility_bills)
   var query='select utilities.name, utility_payments.* from utilities inner join utility_payments on utilities.id=utility_payments.utility where utility_payments.tenant='+tenant+' and utility_payments.utility='+utility+' and utility_payments.month='+month+';';
 
   connection.query(query,function(err,utility_payment) {

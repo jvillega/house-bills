@@ -107,5 +107,5 @@ create table if not exists utility_payments (
   upayment_percentage int,
   foreign key (tenant) references tenants (id) on delete cascade,
   foreign key (utility) references utilities (id) on delete cascade,
-  foreign key (upayment_bill) references utility_bills (id) on delete cascade
+  foreign key (upayment_bill) references utility_bills (ubill_id) on delete cascade
 );
