@@ -48,8 +48,16 @@ router.post('/tenants',function(req,res) {
     });
   } else if (req.body.type==='tenant') {
     emma_functions.GetTenantByID(req.body,function (err,rents,tenant) {
-      res.render('emma/snippets/tenants_form.ejs',{rents:rents,tenant:tenant});
+      res.render('emma/snippets/tenants_form.ejs',{tenant:tenant});
     });
+  } else if (req.body.type==='new') {
+    res.render('emma/snippets/tenants_form.ejs',{tenant:undefined});
+  } else if (req.body.type==='add') {
+    emma_functions.AddTenant(req.body,function (err) {
+      res.render('emma/snippets/message.ejs',{message:'Successful'});
+    });
+  } else if (req.body.type==='update') {
+
   }
 });
 

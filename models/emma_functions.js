@@ -164,6 +164,19 @@ exports.GetUtilityBillsByUtilityAndYear=function(utility_info,callback) {
   })
 }
 
+exports.AddTenant=function(tenant_info,callback) {
+  var query='insert into tenants (rent,first_name,last_name) values ('+tenant_info.rent+',\''+tenant_info.first_name+'\',\''+tenant_info.last_name+'\');';
+
+  connection.query(query,function (err) {
+    if (err) {
+      console.log(err);
+      callback(true);
+      return;
+    }
+    callback(false);
+  });
+}
+
 // HELPERS
 var AddRent=function(rent_total,day,callback) {
   query='insert into rent (rent_total,day) values ('+rent_total+','+day+');';

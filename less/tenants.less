@@ -10,8 +10,27 @@ div.content.tenants {
     @media (min-width: @screen-sm-min) {
       width: 60%;
     }
-    div.add_container {
+    #form_locations {
       width: 100%;
+      @media (min-width: @screen-sm-min) {
+        width: 100%;
+      }
+      label {
+        color: @secondary-color;
+        display: block;
+        width: 90%;
+        margin: 0 auto 10px auto;
+        text-align: left;
+      }
+      .select-styler();
+      select {
+        width: 90%;
+        max-width: 90%;
+      }
+    }
+    div.add_container_tenant {
+      width: 100%;
+      margin-top: 10px;
       @media (min-width: @screen-sm-min) {
         width: 50%;
       }
@@ -27,8 +46,9 @@ div.content.tenants {
         .button-styler();
       }
     }
-    #form_locations {
+    #form_tenants {
       width: 100%;
+      margin-top: 10px;
       @media (min-width: @screen-sm-min) {
         width: 50%;
       }
@@ -43,22 +63,6 @@ div.content.tenants {
       select {
         width: 90%;
         max-width: 90%;
-      }
-    }
-    #form_tenants {
-      width: 100%;
-      margin-top: 25px;
-      label {
-        color: @secondary-color;
-        display: block;
-        width: 50%;
-        margin: 0 auto 10px auto;
-        text-align: left;
-      }
-      .select-styler();
-      select {
-        width: 50%;
-        max-width: 50%;
       }
     }
     #form_locations_tenant {
@@ -106,34 +110,16 @@ div.content.tenants {
         .input-styler();
       }
     }
-    #form_month {
-      width: 50%;
-      label {
-        color: @secondary-color;
-        display: block;
+    #form_submit {
+      width: 100%;
+      margin-top: 25px;
+      label {}
+      input {
         width: 90%;
-        margin: 10px auto;
-        text-align: left;
-      }
-      .select-styler();
-      select {
-        width: 90%;
-        max-width: 90%;
-      }
-    }
-    #form_year {
-      width: 50%;
-      label {
-        color: @secondary-color;
-        display: block;
-        width: 90%;
-        margin: 10px auto;
-        text-align: left;
-      }
-      .select-styler();
-      select {
-        width: 90%;
-        max-width: 90%;
+        .button-styler();
+        @media (min-width: @screen-sm-min) {
+          width: 50%;
+        }
       }
     }
   }

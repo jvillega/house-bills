@@ -703,41 +703,12 @@ div.content.tenants form#tenants_form {
     width: 60%;
   }
 }
-div.content.tenants form#tenants_form div.add_container {
-  width: 100%;
-}
-@media (min-width: 767px) {
-  div.content.tenants form#tenants_form div.add_container {
-    width: 50%;
-  }
-}
-div.content.tenants form#tenants_form div.add_container label {
-  color: #848fa7;
-  display: block;
-  width: 90%;
-  margin: 0 auto;
-  text-align: left;
-}
-div.content.tenants form#tenants_form div.add_container button {
-  width: 90%;
-  margin: 10px auto 0 auto;
-  background-color: #3b4252;
-  color: #848fa7;
-  border: 2px solid #848fa7;
-  padding: 10px 15px;
-  border-radius: 10px;
-}
-div.content.tenants form#tenants_form div.add_container button:hover {
-  background-color: #848fa7;
-  color: #3b4252;
-  border: 2px solid #3b4252;
-}
 div.content.tenants form#tenants_form #form_locations {
   width: 100%;
 }
 @media (min-width: 767px) {
   div.content.tenants form#tenants_form #form_locations {
-    width: 50%;
+    width: 100%;
   }
 }
 div.content.tenants form#tenants_form #form_locations label {
@@ -789,14 +760,49 @@ div.content.tenants form#tenants_form #form_locations select {
   width: 90%;
   max-width: 90%;
 }
+div.content.tenants form#tenants_form div.add_container_tenant {
+  width: 100%;
+  margin-top: 10px;
+}
+@media (min-width: 767px) {
+  div.content.tenants form#tenants_form div.add_container_tenant {
+    width: 50%;
+  }
+}
+div.content.tenants form#tenants_form div.add_container_tenant label {
+  color: #848fa7;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+}
+div.content.tenants form#tenants_form div.add_container_tenant button {
+  width: 90%;
+  margin: 10px auto 0 auto;
+  background-color: #3b4252;
+  color: #848fa7;
+  border: 2px solid #848fa7;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+div.content.tenants form#tenants_form div.add_container_tenant button:hover {
+  background-color: #848fa7;
+  color: #3b4252;
+  border: 2px solid #3b4252;
+}
 div.content.tenants form#tenants_form #form_tenants {
   width: 100%;
-  margin-top: 25px;
+  margin-top: 10px;
+}
+@media (min-width: 767px) {
+  div.content.tenants form#tenants_form #form_tenants {
+    width: 50%;
+  }
 }
 div.content.tenants form#tenants_form #form_tenants label {
   color: #848fa7;
   display: block;
-  width: 50%;
+  width: 90%;
   margin: 0 auto 10px auto;
   text-align: left;
 }
@@ -839,8 +845,8 @@ div.content.tenants form#tenants_form #form_tenants select option {
   font-weight: normal;
 }
 div.content.tenants form#tenants_form #form_tenants select {
-  width: 50%;
-  max-width: 50%;
+  width: 90%;
+  max-width: 90%;
 }
 div.content.tenants form#tenants_form #form_locations_tenant {
   width: 100%;
@@ -942,109 +948,28 @@ div.content.tenants form#tenants_form #form_last_name input:focus {
   background-color: #3b4252;
   border: 1px solid #848fa7;
 }
-div.content.tenants form#tenants_form #form_month {
-  width: 50%;
-}
-div.content.tenants form#tenants_form #form_month label {
-  color: #848fa7;
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  text-align: left;
-}
-div.content.tenants form#tenants_form #form_month select {
-  display: block;
-  font-size: 16px;
-  color: #3b4252;
-  line-height: 1.3;
-  padding: 0.6em 1.4em 0.5em 0.8em;
+div.content.tenants form#tenants_form #form_submit {
   width: 100%;
-  max-width: 50%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  border: 1px solid #aaa;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-  border-radius: 0.5em;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #848fa7;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
+  margin-top: 25px;
 }
-div.content.tenants form#tenants_form #form_month select::-ms-expand {
-  display: none;
-}
-div.content.tenants form#tenants_form #form_month select:hover {
-  border-color: #3b4252;
-}
-div.content.tenants form#tenants_form #form_month select:focus {
-  border-color: #3b4252;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
-  color: #3b4252;
-  outline: none;
-}
-div.content.tenants form#tenants_form #form_month select option {
-  font-weight: normal;
-}
-div.content.tenants form#tenants_form #form_month select {
+div.content.tenants form#tenants_form #form_submit input {
   width: 90%;
-  max-width: 90%;
-}
-div.content.tenants form#tenants_form #form_year {
-  width: 50%;
-}
-div.content.tenants form#tenants_form #form_year label {
+  margin: 10px auto 0 auto;
+  background-color: #3b4252;
   color: #848fa7;
-  display: block;
-  width: 90%;
-  margin: 10px auto;
-  text-align: left;
+  border: 2px solid #848fa7;
+  padding: 10px 15px;
+  border-radius: 10px;
 }
-div.content.tenants form#tenants_form #form_year select {
-  display: block;
-  font-size: 16px;
-  color: #3b4252;
-  line-height: 1.3;
-  padding: 0.6em 1.4em 0.5em 0.8em;
-  width: 100%;
-  max-width: 50%;
-  box-sizing: border-box;
-  margin: 0 auto;
-  border: 1px solid #aaa;
-  box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
-  border-radius: 0.5em;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
+div.content.tenants form#tenants_form #form_submit input:hover {
   background-color: #848fa7;
-  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E');
-  background-repeat: no-repeat, repeat;
-  background-position: right 0.7em top 50%, 0 0;
-  background-size: 0.65em auto, 100%;
-}
-div.content.tenants form#tenants_form #form_year select::-ms-expand {
-  display: none;
-}
-div.content.tenants form#tenants_form #form_year select:hover {
-  border-color: #3b4252;
-}
-div.content.tenants form#tenants_form #form_year select:focus {
-  border-color: #3b4252;
-  box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
-  box-shadow: 0 0 0 3px -moz-mac-focusring;
   color: #3b4252;
-  outline: none;
+  border: 2px solid #3b4252;
 }
-div.content.tenants form#tenants_form #form_year select option {
-  font-weight: normal;
-}
-div.content.tenants form#tenants_form #form_year select {
-  width: 90%;
-  max-width: 90%;
+@media (min-width: 767px) {
+  div.content.tenants form#tenants_form #form_submit input {
+    width: 50%;
+  }
 }
 div.content.utilities {
   width: 80%;
