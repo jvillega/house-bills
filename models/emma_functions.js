@@ -177,6 +177,19 @@ exports.AddTenant=function(tenant_info,callback) {
   });
 }
 
+exports.UpdateTenant=function(tenant_info,callback) {
+  var query='update tenants set first_name=\''+tenant_info.first_name+'\', last_name=\''+tenant_info.last_name+'\' where id='+tenant_info.tenant+';';
+
+  connection.query(query,function (err) {
+    if (err) {
+      console.log(err);
+      callback(true);
+      return;
+    }
+    callback(false);
+  });
+}
+
 // HELPERS
 var AddRent=function(rent_total,day,callback) {
   query='insert into rent (rent_total,day) values ('+rent_total+','+day+');';

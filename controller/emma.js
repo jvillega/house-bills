@@ -57,7 +57,9 @@ router.post('/tenants',function(req,res) {
       res.render('emma/snippets/message.ejs',{message:'Successful'});
     });
   } else if (req.body.type==='update') {
-
+    emma_functions.UpdateTenant(req.body,function (err) {
+      res.render('emma/snippets/message.ejs',{message:'Succesful'});
+    });
   }
 });
 

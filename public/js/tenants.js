@@ -72,7 +72,26 @@ $(document).ready(function () {
       last_name:$('#last_name').val()
     }
 
-    console.log(payload);
+    $.ajax({
+      url: "/emma/tenants",
+      type: "POST",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify(payload),
+      complete: function(data) {
+        $(data.responseText).insertAfter('#form_submit');
+      }
+    });
+  });
+  $('form').on('click', '#update', function(event) {
+    event.preventDefault();
+
+    var payload={
+      type:'update',
+      tenant:$('#tenants_dropdown').val(),
+      first_name:$('#first_name').val(),
+      last_name:$('#last_name').val()
+    }
 
     $.ajax({
       url: "/emma/tenants",
