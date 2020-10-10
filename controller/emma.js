@@ -16,19 +16,23 @@ router.get('/rents',function(req,res) {
 
 // rents post route
 router.post('/rents',function(req,res) {
-  if (req.body.type==='blank') {
-    res.render('emma/snippets/rent_form.ejs',{rent:undefined});
-  } else if (req.body.type==='get') {
+  if (req.body.type==='rent') {
     emma_functions.GetRent(req.body.id,function(err,rent) {
       res.render('emma/snippets/rent_form.ejs',{rent:rent});
     });
+  } else if (req.body.type==='new') {
+    res.render('emma/snippets/rent_form.ejs',{rent:undefined});
   } else if (req.body.type==='update') {
     emma_functions.UpdateRent(req.body,function(err) {
-      res.render('emma/snippets/message.ejs',{message:'success'});
+      res.render('emma/snippets/message.ejs',{message:'Successful'});
+    });
+  } else if (req.body.type==='delete') {
+    emma_functions.DeleteRent(req.body,function (err) {
+      res.render('emma/snippets/message.ejs',{message:'Successful'});
     });
   } else if (req.body.type==='add') {
     emma_functions.AddRent(req.body,function(err) {
-      res.render('emma/snippets/message.ejs',{message:'success'});
+      res.render('emma/snippets/message.ejs',{message:'Successful'});
     });
   }
 });
@@ -54,6 +58,10 @@ router.post('/tenants',function(req,res) {
     res.render('emma/snippets/tenants_form.ejs',{tenant:undefined});
   } else if (req.body.type==='add') {
     emma_functions.AddTenant(req.body,function (err) {
+      res.render('emma/snippets/message.ejs',{message:'Successful'});
+    });
+  } else if (req.body.type==='delete') {
+    emma_functions.DeleteTenant(req.body,function (err) {
       res.render('emma/snippets/message.ejs',{message:'Successful'});
     });
   } else if (req.body.type==='update') {

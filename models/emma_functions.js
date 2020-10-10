@@ -17,7 +17,7 @@ exports.GetRents=function(callback) {
 }
 
 exports.GetRent=function(rent,callback) {
-  var query='select rent.rent_total,rent.day,address.street_address,address.city,address.state,address.zip_code,deposit.deposit_total,deposit.remainder from rent inner join address on rent.id=address.rent inner join deposit on rent.id=deposit.rent where rent.id='+rent+';';
+  var query='select rent.rent_total,rent.due_day,address.street_address,address.city,address.state,address.zip_code,deposit.deposit_total,deposit.remainder from rent inner join address on rent.id=address.rent inner join deposit on rent.id=deposit.rent where rent.id='+rent+';';
 
 
   connection.query(query,function(err,rent) {
@@ -190,9 +190,35 @@ exports.UpdateTenant=function(tenant_info,callback) {
   });
 }
 
+exports.DeleteTenant=function(tenant_info,callback) {
+  var query='delete from tenants where id='+tenant_info.tenant+';';
+
+  connection.query(query,function (err) {
+    if (err) {
+      console.log(err);
+      callback(true);
+      return;
+    }
+    callback(false);
+  });
+}
+
+exports.DeleteRent=function(rent_info,callback) {
+  var query='delete from rent where id='+rent_info.rent+';';
+
+  connection.query(query,function (err) {
+    if (err) {
+      console.log(err);
+      callback(true);
+      return;
+    }
+    callback(false);
+  });
+}
+
 // HELPERS
 var AddRent=function(rent_total,day,callback) {
-  query='insert into rent (rent_total,day) values ('+rent_total+','+day+');';
+  query='insert into rent (rent_total,due_day) values ('+rent_total+','+day+');';
 
   connection.query(query,function (err) {
     if (err) {
@@ -247,7 +273,7 @@ var AddDeposit=function(last_rent_id,deposit,remainder,callback) {
 }
 
 var UpdateRent=function(rent_id,rent_total,day,callback) {
-  var query='update rent set rent_total='+rent_total+', day='+day+' where id='+rent_id+';';
+  var query='update rent set rent_total='+rent_total+', due_day='+day+' where id='+rent_id+';';
 
   connection.query(query,function(err) {
     if (err) {

@@ -3,7 +3,7 @@ $(document).ready(function () {
     event.preventDefault();
 
     var payload={
-      type: 'get',
+      type: 'rent',
       id: $(this).val()
     };
 
@@ -14,18 +14,17 @@ $(document).ready(function () {
       processData: false,
       data: JSON.stringify(payload),
       complete: function(data) {
-        $('#form_total,#form_day,#form_address,#form_city,#form_state,#form_zip,#form_deposit,#form_remaining_deposit,#form_submit').remove();
+        $('#form_total,#form_day,#form_address,#form_city,#form_state,#form_zip,#form_deposit,#form_remaining_deposit,#form_update,#form_add,#form_delete,#form_update').remove();
         $(data.responseText).insertAfter('#form_locations');
-        $('#submit').attr('data-type','update'); // add data attribute type to submit button
       }
     });
   });
 
-  $('#add_rent').click(function (event) {
+  $('#new').click(function (event) {
     event.preventDefault();
 
     var payload={
-      type:'blank'
+      type:'new'
     };
 
     $.ajax({
@@ -35,19 +34,18 @@ $(document).ready(function () {
       processData: false,
       data: JSON.stringify(payload),
       complete: function(data) {
-        $('#form_total,#form_day,#form_address,#form_city,#form_state,#form_zip,#form_deposit,#form_remaining_deposit,#form_submit').remove();
-        $('#rents_dropdown').val('');
+        $('#form_total,#form_day,#form_address,#form_city,#form_state,#form_zip,#form_deposit,#form_remaining_deposit,#form_update,#form_delete,#form_add').remove();
+        $('#locations_dropdown').val('');
         $(data.responseText).insertAfter('#form_locations');
-        $('#submit').attr('data-type','add'); // add data attribute type to submit button
       }
     });
   });
 
-  $('form').on('click', '#submit', function(event) {
+  $('form').on('click', '#update', function(event) {
     event.preventDefault();
 
     var payload={
-      type: $('#submit').attr('data-type'),
+      type: 'update',
       id: $('#locations_dropdown').val(),
       total: $('#total').val(),
       day: $('#day').val(),
@@ -59,7 +57,25 @@ $(document).ready(function () {
       remaining_deposit: $('#remaining_deposit').val()
     }
 
-    console.log(payload);
+    $.ajax({
+      url: "/emma/rents",
+      type: "POST",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify(payload),
+      complete: function(data) {
+        $(data.responseText).insertAfter('#form_update');
+      }
+    });
+  });
+
+  $('form').on('click', '#delete', function(event) {
+    event.preventDefault();
+
+    var payload={
+      type: 'delete',
+      rent: $('#locations_dropdown').val()
+    }
 
     $.ajax({
       url: "/emma/rents",
@@ -68,7 +84,34 @@ $(document).ready(function () {
       processData: false,
       data: JSON.stringify(payload),
       complete: function(data) {
-        $(data.responseText).insertAfter('#form_submit');
+        $(data.responseText).insertAfter('#form_update');
+      }
+    });
+  });
+  $('form').on('click', '#add', function(event) {
+    event.preventDefault();
+
+    var payload={
+      type: 'add',
+      id: $('#locations_dropdown').val(),
+      total: $('#total').val(),
+      day: $('#day').val(),
+      address: $('#address').val(),
+      city: $('#city').val(),
+      state: $('#state').val(),
+      zip: $('#zip').val(),
+      deposit: $('#deposit').val(),
+      remaining_deposit: $('#remaining_deposit').val()
+    }
+
+    $.ajax({
+      url: "/emma/rents",
+      type: "POST",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify(payload),
+      complete: function(data) {
+        $(data.responseText).insertAfter('#form_add');
       }
     });
   });

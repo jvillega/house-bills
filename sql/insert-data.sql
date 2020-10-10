@@ -58,5 +58,6 @@ insert into utility_bills (utility,ubill_amount,ubill_month,ubill_day,ubill_year
 
 -- utility_payments insert
 -- tenant, utility, upayment_bill, upayment_month, upayment_day, upayment_year, upayment_payed, upayment_amount, upayment_percentage
-
+insert into utility_payments values (1,1,3,11,1,2020,true,25.25,25);
+insert into utility_payments values (1,3,9,11,1,2020,true,23.25,25);
 

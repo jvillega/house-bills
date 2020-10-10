@@ -83,6 +83,7 @@ $(document).ready(function () {
       }
     });
   });
+
   $('form').on('click', '#update', function(event) {
     event.preventDefault();
 
@@ -100,7 +101,27 @@ $(document).ready(function () {
       processData: false,
       data: JSON.stringify(payload),
       complete: function(data) {
-        $(data.responseText).insertAfter('#form_submit');
+        $(data.responseText).insertAfter('#form_update');
+      }
+    });
+  });
+
+  $('form').on('click', '#delete', function(event) {
+    event.preventDefault();
+
+    var payload={
+      type:'delete',
+      tenant:$('#tenants_dropdown').val()
+    }
+
+    $.ajax({
+      url: "/emma/tenants",
+      type: "POST",
+      contentType: "application/json",
+      processData: false,
+      data: JSON.stringify(payload),
+      complete: function(data) {
+        $(data.responseText).insertAfter('#form_update');
       }
     });
   });

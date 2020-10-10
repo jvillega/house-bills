@@ -10,7 +10,7 @@ div.content.rents {
     @media (min-width: @screen-sm-min) {
       width: 60%;
     }
-    div.add_container {
+    div.add_container_rent {
       width: 100%;
       @media (min-width: @screen-sm-min) {
         width: 50%;
@@ -197,7 +197,7 @@ div.content.rents {
         .input-styler();
       }
     }
-    #form_submit {
+    #form_add{
       width: 100%;
       margin-top: 25px;
       label {}
@@ -207,6 +207,30 @@ div.content.rents {
         @media (min-width: @screen-sm-min) {
           width: 50%;
         }
+      }
+    }
+    #form_delete {
+      width: 100%;
+      margin-top: 25px;
+      @media (min-width: @screen-sm-min) {
+        width: 50%;
+      }
+      label {}
+      input {
+        width: 90%;
+        .button-styler();
+      }
+    }
+    #form_update {
+      width: 100%;
+      margin-top: 25px;
+      @media (min-width: @screen-sm-min) {
+        width: 50%;
+      }
+      label {}
+      input {
+        width: 90%;
+        .button-styler();
       }
     }
   }
